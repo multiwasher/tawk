@@ -86,7 +86,7 @@
             transform: translateY(0);
         }
 
-        /* Contentor da Bolha - Apenas movimento de flow */
+        /* Contentor da Bolha - Movimento fluido constante sem interação de hover */
         .full-bubble-hero {
             width: 100%;
             aspect-ratio: 1 / 1;
@@ -101,15 +101,11 @@
                         inset 0 0 0 10px rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(61, 183, 217, 0.2);
             
-            transition: transform 0.5s ease, background-size 0.5s ease;
+            /* Removido o efeito de transform no hover */
+            pointer-events: none; /* Opcional: ignora eventos do rato para garantir total estaticidade */
         }
 
-        .full-bubble-hero:hover {
-            transform: scale(1.03);
-            background-size: 115%;
-        }
-
-        /* Animação apenas de border-radius para efeito orgânico */
+        /* Animação de border-radius para efeito orgânico */
         @keyframes morph-fluid {
             0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
             25% { border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
@@ -187,9 +183,9 @@
             </div>
             
             <!-- Bolha Apenas com Flow e Logotipo abaixo -->
-            <div class="relative reveal delay-300 w-full max-w-xl mx-auto flex flex-col items-center">
-                <!-- Bolha movida para cima via margem negativa e ajuste de container -->
-                <div class="full-bubble-hero mb-12 lg:-mt-16">
+            <div class="relative reveal delay-300 w-full max-w-lg mx-auto flex flex-col items-center">
+                <!-- Bolha sem hover e com margem para compensar o logo -->
+                <div class="full-bubble-hero mb-10 lg:-mt-20">
                     <!-- Conteúdo estável via CSS background-size: 110% -->
                 </div>
                 
@@ -197,7 +193,7 @@
                 <div class="w-full flex justify-center items-center px-12">
                     <img src="https://somengil.com/imgs/logo.svg" 
                          alt="Logotipo Somengil" 
-                         class="h-10 lg:h-14 w-auto opacity-80 hover:opacity-100 transition-opacity logo-footer-svg">
+                         class="h-9 lg:h-12 w-auto opacity-80 logo-footer-svg">
                 </div>
 
                 <!-- Brilhos estáticos -->
@@ -280,6 +276,5 @@
         window.addEventListener("scroll", reveal);
         reveal();
     </script>
-      <!--Start of Tawk.to Script--> <script type="text/javascript"> var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/69d61e5ad602d01c35417031/1jlm6d51p'; s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })(); </script> <!--End of Tawk.to Script-->
 </body>
 </html>

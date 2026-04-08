@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somengil | Engenharia de Lavagem Industrial Ultra-Moderna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        // Configuração do Tailwind para Dark Mode baseado em classe
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0066FF',
+                            dark: '#0A0F1A',
+                            gray: '#F8FAFC'
+                        }
+                    }
+                }
+            }
+        }
+
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .header-glass {
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .header-glass {
+            background: rgba(10, 15, 26, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo-somengil-nav {
+            height: 4.5rem !important;
+            width: auto;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-somengil-nav {
+                height: 3.2rem !important;
+            }
+        }
+
+        .hero-bg {
+            background: radial-gradient(circle at top right, rgba(0, 102, 255, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(0, 102, 255, 0.08), transparent);
+        }
+
+        .btn-modern {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Contentor da Bolha - Apenas movimento de flow */
+        .full-bubble-hero {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            position: relative;
+            animation: morph-fluid 18s linear infinite;
+            background-image: url('https://static.wixstatic.com/media/a6967f_2b78d1e889464ca6858ed9102df64d18~mv2.png');
+            background-size: 110%; 
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            box-shadow: 0 30px 60px -12px rgba(0, 102, 255, 0.2), 
+                        inset 0 0 0 10px rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(61, 183, 217, 0.2);
+            
+            transition: transform 0.5s ease, background-size 0.5s ease;
+        }
+
+        .full-bubble-hero:hover {
+            transform: scale(1.03);
+            background-size: 115%;
+        }
+
+        /* Animação apenas de border-radius para efeito orgânico */
+        @keyframes morph-fluid {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            25% { border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            75% { border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #0066FF, #00C2FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Filtro para o logo SVG no dark mode */
+        .dark .logo-footer-svg {
+            filter: brightness(0) invert(1);
+        }
+    </style>
+</head>
+<body class="bg-brand-gray dark:bg-brand-dark text-slate-900 dark:text-slate-100 overflow-x-hidden">
+
+    <!-- Cabeçalho -->
+    <header class="fixed w-full z-50 header-glass transition-all duration-300" id="main-header">
+        <nav class="container mx-auto py-2 flex justify-between items-center px-4 md:px-0">
+            <div class="flex items-center">
+                <a href="#inicio" class="inline-block">
+                    <img src="https://static.wixstatic.com/media/a6967f_982db5e228854134b613cf1ffab4708d~mv2.png" 
+                         alt="Logótipo Somengil" 
+                         class="logo-somengil-nav">
+                </a>
+            </div>
+            
+            <div class="hidden lg:flex items-center space-x-10">
+                <a href="#inicio" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Início</a>
+                <a href="#solucoes" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Soluções</a>
+                <a href="#tecnologia" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Tecnologia</a>
+                
+                <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:ring-2 hover:ring-blue-600 transition-all">
+                    <i id="theme-toggle-dark-icon" class="hidden fas fa-moon"></i>
+                    <i id="theme-toggle-light-icon" class="hidden fas fa-sun"></i>
+                </button>
+
+                <a href="#contato" class="bg-slate-900 dark:bg-blue-600 text-white px-8 py-3 rounded-full text-sm font-bold btn-modern">Falar com Especialista</a>
+            </div>
+
+            <button class="lg:hidden text-2xl pr-4">
+                <i class="fas fa-bars-staggered"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Seção Hero -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-24 px-6 overflow-hidden">
+        <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-xs font-bold mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+                    </span>
+                    ENGENHARIA DE PRÓXIMA GERAÇÃO
+                </div>
+                <h1 class="text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-8 tracking-tighter dark:text-white">
+                    A lavagem industrial <span class="gradient-text">reimaginada.</span>
+                </h1>
+                <p class="text-lg text-slate-500 dark:text-slate-400 max-w-lg mb-10 leading-relaxed">
+                    Elevamos os padrões de higiene industrial com tecnologia de precisão que economiza recursos e maximiza a produtividade da sua linha.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contato" class="bg-[#0066FF] text-white px-10 py-5 rounded-2xl font-bold text-lg btn-modern flex items-center gap-3">
+                        Explorar Soluções <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Bolha Apenas com Flow e Logotipo abaixo -->
+            <div class="relative reveal delay-300 w-full max-w-xl mx-auto flex flex-col items-center">
+                <!-- Bolha movida para cima via margem negativa e ajuste de container -->
+                <div class="full-bubble-hero mb-12 lg:-mt-16">
+                    <!-- Conteúdo estável via CSS background-size: 110% -->
+                </div>
+                
+                <!-- Logotipo Somengil SVG abaixo da bolha -->
+                <div class="w-full flex justify-center items-center px-12">
+                    <img src="https://somengil.com/imgs/logo.svg" 
+                         alt="Logotipo Somengil" 
+                         class="h-10 lg:h-14 w-auto opacity-80 hover:opacity-100 transition-opacity logo-footer-svg">
+                </div>
+
+                <!-- Brilhos estáticos -->
+                <div class="absolute -top-16 -right-10 w-48 h-48 bg-cyan-400/10 rounded-full blur-3xl -z-10"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento Grid Soluções -->
+    <section id="solucoes" class="py-32 bg-white dark:bg-[#0E1525]">
+        <div class="container mx-auto px-6">
+            <div class="reveal mb-16">
+                <h2 class="text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 dark:text-white">Engenharia de alta precisão</h2>
+                <div class="h-1.5 w-20 bg-blue-600 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-8 bento-card p-10 bg-slate-50 dark:bg-brand-dark rounded-[32px] flex flex-col justify-between overflow-hidden relative group reveal border border-transparent dark:border-white/5">
+                    <div class="relative z-10">
+                        <span class="text-blue-600 dark:text-blue-400 font-bold text-sm tracking-widest uppercase">Mais Vendido</span>
+                        <h3 class="text-3xl font-bold mt-2 mb-4 dark:text-white">MultiWasher™ Elite</h3>
+                        <p class="text-slate-500 dark:text-slate-400 max-w-sm mb-8">O padrão de excelência em lavagem de contentores. Redução de 70% no consumo de água.</p>
+                        <button class="bg-slate-900 dark:bg-blue-600 text-white px-6 py-3 rounded-xl font-bold btn-modern">Conhecer Modelo</button>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" class="absolute right-0 bottom-0 w-1/2 h-full object-cover opacity-10 group-hover:opacity-40 transition duration-700" alt="Equipamento Industrial">
+                </div>
+
+                <div class="lg:col-span-4 bento-card p-10 bg-slate-900 text-white rounded-[32px] reveal delay-100">
+                    <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-8">
+                        <i class="fas fa-bolt text-xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Ciclos Ultra-Rápidos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Otimize o tempo de produção com ciclos 40% mais céleres que a concorrência.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-white dark:bg-brand-dark py-12 border-t dark:border-white/5">
+        <div class="container mx-auto px-6 flex flex-col items-center">
+            <img src="https://static.wixstatic.com/media/a6967f_982db5e228854134b613cf1ffab4708d~mv2.png" 
+                 alt="Logótipo Somengil" 
+                 class="h-12 w-auto mb-8 logo-somengil-nav">
+            <p class="text-slate-400 text-[10px] uppercase font-bold tracking-[0.2em]">© 2024 Somengil Industrial. Engenharia Portuguesa.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        function updateThemeIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                themeToggleLightIcon.classList.remove('hidden');
+                themeToggleDarkIcon.classList.add('hidden');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('color-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeIcons();
+        });
+        updateThemeIcons();
+
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add("active");
+                }
+            });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+      <!--Start of Tawk.to Script--> <script type="text/javascript"> var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/69d61e5ad602d01c35417031/1jlm6d51p'; s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })(); </script> <!--End of Tawk.to Script-->
+</body>
+</html>
